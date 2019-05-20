@@ -129,7 +129,7 @@ void GEScaleSyst::AddNewMatrix( int new_copy, std::map<int, std::map<int, float>
 
 GEScaleSyst::GEScaleSyst()
 {
-  // icopy == 1, just for test
+  // icopy == -1, just for test
   _matrix[-1][0][0] =  0.2;  _matrix[-1][0][1] = 0.01;  _matrix[-1][0][2] = -0.2;
   _matrix[-1][1][0] =  0.2;  _matrix[-1][1][1] = 0.01;  _matrix[-1][1][2] = -0.2;
   _matrix[-1][2][0] =  0.2;  _matrix[-1][2][1] = 0.01;  _matrix[-1][2][2] = -0.2;
