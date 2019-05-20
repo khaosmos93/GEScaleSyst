@@ -1,5 +1,5 @@
 # GEScaleSyst
 
 Simple test
-
-root -l 'GEScaleSystTester( int icopy = -1, float pt = 1000., float eta = 0., float phi = 0., int q = 1 )'
+                              icopy  pT      eta   phi   charge
+root -l 'GEScaleSystTester.C( -1,    1000.,  0.,   0.,   1 )'
