@@ -3,6 +3,7 @@
 // #pragma once
 #include <iostream>
 #include <cmath>
+#include <map>
 
 #include "TLorentzVector.h"
 
@@ -18,7 +19,6 @@ class GEScaleSyst {
       verbose = _v;
     };
 
-    // new_copy >= 100 for user defined matrices
     void AddNewMatrix( int new_copy, std::map<int, std::map<int, float> > new_matrix );
 
   private:
@@ -30,10 +30,20 @@ class GEScaleSyst {
     const double etaBinEdge[7] = { -2.4, -2.1, -1.2, 0, 1.2, 2.1, 2.4 };
     const int nphi = 3;
     const double phiBinEdge[4] = { -M_PI, -M_PI/3.0, M_PI/3.0, M_PI };
+
     // _matrix[copy #][eta bin #][phi bin #]
+
     // copy #:
-    //   0 (original),
-    //   1, 2, 3, ... (variation)
+    //   yr: 16, 17, 18
+    //   yr00:  kb (original)
+    //   yr01:  kb + 1 sigma variation
+    //   yr02:  kb - 1 sigma variation
+    //   yr03:  kb + 2 sigma variation
+    //   yr04:  kb - 2 sigma variation
+    //   yr0000, yr0001, ...: random copies using gaus(kappa, sigma)
+    //   yr1000, yr1001, ...: random copies passing loose sign contraint, restrict sign of bias if (k + 2 sigma)(k - 2 sigma) > 0
+    //   yr2000, yr2001, ...: random copies passing tight sign contraint, restrict sign of bias if (k + 1 sigma)(k - 1 sigma) > 0
+
     // eta bin #:
     //   0: [-2.4, -2.1]
     //   1: [-2.1, -1.2]
@@ -41,10 +51,12 @@ class GEScaleSyst {
     //   3: [0.0, 1.2]
     //   4: [1.2, 2.1]
     //   5: [2.1, 2.4]
+
     // phi bin #:
     //   0: [-180, -60]
     //   1: [-60, 60]
     //   2: [60, 180]
+
     std::map<int, std::map<int, std::map<int, float> > > _matrix;
 
     int verbose;
