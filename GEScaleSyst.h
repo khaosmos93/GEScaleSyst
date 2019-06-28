@@ -12,8 +12,8 @@ class GEScaleSyst {
     GEScaleSyst();
     virtual ~GEScaleSyst();
 
-    float GEScaleCorrPt(int icopy, float pt, float eta, float phi, int charge);
-    TLorentzVector GEScaleCorrLvec(int icopy, float pt, float eta, float phi, int charge);
+    float GEScaleCorrPt(int icopy, float pt, float eta, float phi, int charge, bool doOpp = false);
+    TLorentzVector GEScaleCorrLvec(int icopy, float pt, float eta, float phi, int charge, bool doOpp = false);
 
     void SetVerbose(int _v) {
       verbose = _v;
@@ -41,8 +41,7 @@ class GEScaleSyst {
     //   yr03:  kb + 2 sigma variation
     //   yr04:  kb - 2 sigma variation
     //   yr0000, yr0001, ...: random copies using gaus(kappa, sigma)
-    //   yr1000, yr1001, ...: random copies passing loose sign contraint, restrict sign of bias if (k + 2 sigma)(k - 2 sigma) > 0
-    //   yr2000, yr2001, ...: random copies passing tight sign contraint, restrict sign of bias if (k + 1 sigma)(k - 1 sigma) > 0
+    //   yr1000, yr1001, ...: random copies passing sign contraint, restrict sign of bias if (k + 1 sigma)(k - 1 sigma) > 0
 
     // eta bin #:
     //   0: [-2.4, -2.1]
