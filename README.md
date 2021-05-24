@@ -10,6 +10,7 @@ TLorentzVector GEScaleCorrLvec(int icopy, float pt, float eta, float phi, int ch
 ``` txt
 icopy:
   - yr: 16, 17 (77 for 94X samples with correct tracker alignment), 18
+    - UL: 2016 (not available), 2017, 2018 (not available)
   - yr0000, yr0001, ...: random copies using gaus(kappa, sigma)
   - yr1000, yr1001, ...: random copies passing sign contraint, restrict sign of bias if (k + 1 sigma)(k - 1 sigma) > 0
 ```
